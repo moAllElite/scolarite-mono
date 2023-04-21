@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:p="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add user</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" /> <link href="webjars/bulma/0.9.4/css/bulma-rtl.min.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <nav class="breadcrumb ml-5 mt-5" aria-label="breadcrumbs">
+        <ul>
+            <li>
+                <a href="#">
+                <span class="icon is-small">
+                  <i class="fas fa-home" aria-hidden="true"></i>
+                </span>
+                    <span  class="ml-1 mr-2">Student</span>
+                </a>
+            </li>
+            <li class="is-active">
+                <a href="/add">
+                <span class="icon is-small">
+                  <i class="fas fa-user-plus" aria-hidden="true"></i>
+                </span>
+                    <span  class="ml-3">New </span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                <span class="icon is-small">
+                  <i class="fas fa-edit" aria-hidden="true"></i>
+                </span>
+                    <span  class="ml-3">Edit</span>
+                </a>
+            </li>
+            <li>
+                <a href="/index">
+                <span class="icon is-small">
+                  <i class="fas fa-list" aria-hidden="true"></i>
+                </span>
+                    <span  class="ml-3">Liste</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <div class="container m-6">
+        <div class="field">
+            <label class="label">FirstName</label>
+            <div class="control">
+                <input class="input" name="firstName" type="text" placeholder="e.g Alex ">
+            </div>
+        </div>
+
+        <div class="field">
+            <label class="label">Last Name</label>
+            <div class="control">
+                <input class="input" name="lastName" type="text" placeholder="e.g. smith">
+            </div>
+        </div>
+        <div class="field">
+            <label class="label">Birthday</label>
+            <div class="control">
+                <input class="input" type="date"  name="birthday" style="width: 12%;">
+            </div>
+        </div>
+    </div>
+</body>
+</html>

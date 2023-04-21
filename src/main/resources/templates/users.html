@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width = device-width, initial-scale = 1, shrink-to-fit = no">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" /><link rel="stylesheet" href="/webjars/bulma/0.9.4/css/bulma-rtl.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" integrity="sha512-fD9DI5bZwQxOi7MhYWnnNPlvXdp/2Pj3XSTRrFs5FQa4mizyGLnJcN6tuvUS6LbmgN1ut+XGSABKvjN0H6Aoow==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <title>User</title>
+</head>
+<body>
+    <nav class="ml-5 mt-5 breadcrumb" aria-label="breadcrumbs">
+        <ul>
+            <li>
+                <a href="/welcome">
+            <span class="icon is-small">
+              <i class="fas fa-home" aria-hidden="true"></i>
+            </span>
+                    <span class="ml-1 mr-2" >Student</span>
+                </a>
+            </li>
+            <li>
+                <a href="/add">
+            <span class="icon is-small">
+              <i class="fas fa-user-plus" aria-hidden="true"></i>
+            </span>
+                    <span  class="ml-3">  New </span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+            <span class="icon is-small">
+              <i class="fas fa-edit" aria-hidden="true"></i>
+            </span>
+                    <span class="ml-3">Edit</span>
+                </a>
+            </li>
+            <li class="is-active">
+                <a href="/index">
+            <span class="icon is-small">
+              <i class="fas fa-list" aria-hidden="true"></i>
+            </span>
+                    <span  class="ml-3">List</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <div class="card">
+            <header class="card-header">
+                <div class="card-header ">
+                    <p class="card-header-title ">List of user</p>
+                </div>
+            </header>
+        </div>
+        <div class="card-content  ">
+            <div class="content">
+                <form class="columns  mt-4" method="get" th:action="@{index}">
+                    <label class=" label mt-2 ">Key word</label>
+                    <div class="control ml-3 columnis-three-fifths  has-icons-left  is-justify-content-start">
+                        <input type="text" class="input is-primary" name="keyword" placeholder="Search" th:value="${keyword}">
+                        <span class="icon is-small is-left ">
+                          <i class="fas fa-search  column"></i>
+                        </span>
+                    </div>
+                    <button type="submit" class="button is-primary mt-0 ml-3 ">Search</button>
+                </form>
+                <table class="table  ">
+                        <thead >
+                        <tr>
+                            <th><abbr title="Position">ID</abbr></th>
+                            <th>First Name</th>
+                            <th><abbr title="Last name">Last name</abbr></th>
+                            <th><abbr title="Won">Birthday</abbr></th>
+                            <th>Action</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="u:${listeUsers}">
+                            <td th:text="${u.id}"></td>
+                            <td th:text="${u.firstName}"></td>
+                            <td th:text="${u.lastName}"></td>
+                            <td th:text="${u.dateNasissance}"></td>
+                            <td>
+                                <a onclick="return confirm('Are you sure?')" class="button is-delete" th:href="@{delete(id=${u.id},keyword=${keyword} ,page=${currentPage})}">
+                                    Delete
+                                    <span><i class="fas fa-trash"></i></span>
+                                </a>
+                            </td>
+                        </tr>
+                        </tbody>
+                </table>
+            </div>
+        </div>
+        <nav class="pagination m-3" role="navigation" aria-label="pagination">
+            <ul class="pagination-list">
+                <li th:each="page,status:${pages}">
+                    <a th:class="${status.index==currentPage? 'pagination-link is-current':'pagination-link'}"
+                       th:text="${status.index}"
+                       th:href="@{index(page=${status.index},keyword=${keyword})}"
+                       aria-label="Goto page 1"></a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+    <style>
+        .columns.is-vcentered {
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+        }
+    </style>
+</body>
+</html>

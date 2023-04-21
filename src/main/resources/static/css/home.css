@@ -1,0 +1,9 @@
+.hero{
+    background: black url("/static/images/car1.jpg") center /cover;
+}
+@media (max-width: 1024px) {
+    .hero{  background: black url("static/images/car2.jpg") center /cover;}
+}
+@media (max-width: 768px) {
+    .hero{  background: black url("static/images/car3.jpg") center /cover;}
+}
